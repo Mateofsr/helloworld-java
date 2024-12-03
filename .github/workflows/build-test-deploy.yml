@@ -18,5 +18,14 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
+      - name: Cache
+        uses: actions/cache@v4.1.2
+        with:
+          # A list of files, directories, and wildcard patterns to cache and restore
+          path: ${{ github.workspace }}/.m2/repository
+          # An explicit key for restoring and saving the cache
+          key: ${{ runner.os }}-maven-${{ hashfiles('**/pow.xml')}}
       - name: Build project with Maven
         run: mvn clean package -DskipTests
+        env:
+          MAVEN_OPTS: "-Dmaven.repo.local=${{ github.workspace }}/.m2/repository"
