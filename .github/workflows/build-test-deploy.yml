@@ -11,8 +11,10 @@ jobs:
     name: Build application
     runs-on: ubuntu-latest
     steps:
+      - run: ls
       - name: Checkout
         uses: actions/checkout@v4.2.2
+      - run: ls
       - name: Setup Java JDK
         uses: actions/setup-java@v4.5.0
         with:
