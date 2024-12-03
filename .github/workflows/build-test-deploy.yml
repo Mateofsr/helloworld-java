@@ -8,7 +8,15 @@ env:
   PROJECT_VERSION: 1.0.0
 jobs:
   build:
+    name: Build application
     runs-on: ubuntu-latest
     steps:
-      - name: Initialisation of PROJECT_VERSION
-        run: echo "Project version ${{ env.PROJECT_VERSION }}"
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.5.0
+        with:
+          java-version: 17
+          distribution: temurin
+      - name: Build project with Maven
+        run: mvn clean package -DskipTests
