@@ -71,6 +71,6 @@ jobs:
       uses: actions/download-artifact@v4.1.8
       with:
         # Name of the artifact to download. If unspecified, all artifacts for the run are downloaded.
-        name: Downloading the artifact
+        name: artifactjar
     - name: Start depoyment
       run: echo "Deployment of the application"
